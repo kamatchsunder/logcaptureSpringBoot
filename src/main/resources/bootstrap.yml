@@ -1,0 +1,24 @@
+spring:
+    profiles:
+      active: development
+    application:
+      name: logcapture
+    cloud:
+      consul:
+        enabled: true
+        host: consul
+        config:
+          prefix: sunder
+          default-context: shared
+          discovery:
+            instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+            prefer-agent-address: true
+            prefer-ip-address: true
+            health-check-path: /management/health
+            tags: service, spring-boot, management.port=${management.port}
+
+          retry:
+            max-interval: 10000
+            multiplier: 2
+      vault:
+        enabled: false

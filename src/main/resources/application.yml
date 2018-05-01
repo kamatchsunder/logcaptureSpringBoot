@@ -1,0 +1,10 @@
+server:
+    port: 18117
+
+security:
+    basic:
+       enabled: false
+
+spring:
+    profiles: development
+
